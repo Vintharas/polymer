@@ -10,32 +10,16 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: '<json:package.json>',
     testacular: {
-      options: {
-        configFile: "testacular-shadowdom.conf.js",
-        keepalive: true,
-        singleRun: true
-      },
-      chrome: {
+      shadowdom: {
         options: {
-          browsers: ['Chrome']
-        }
-      },
-      chrome_canary: {
-        options: {
-          browsers: ['ChromeCanary']
-        }
-      },
-      firefox: {
-        options: {
-          browsers: ['Firefox']
-        }
-      },
-      ie: {
-        options: {
-          browsers: ['IE']
+          configFile: "testacular-shadowdom.conf.js",
+          browsers: browsers,
+          keepalive: true,
+          singleRun: true
         }
       }
     },
   });
   grunt.loadNpmTasks('grunt-testacular');
+  grunt.registerTask('test', 'testacular');
 }
